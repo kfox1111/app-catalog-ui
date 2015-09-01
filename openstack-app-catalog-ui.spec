@@ -70,7 +70,7 @@ app-catalog-ui is an OpenStack Horizon user interface plugin to provide easy acc
 
 %prep
 %setup -q -n app-catalog-ui-%{upstream_version}
-rm -rf tuskar_ui.egg-info/
+rm -rf app_catalog_ui.egg-info/
 
 # Remove the requirements file so that pbr hooks don't add it
 # to distutils requires_dist config
@@ -103,6 +103,15 @@ ln -s %{_sysconfdir}/openstack-dashboard/enabled/_91_project_component_catalog_p
 #cp -r app_catalog/templates/* %{buildroot}%{python2_sitelib}/app_catalog/templates/
 #cp -r component_catalog/templates/* %{buildroot}%{python2_sitelib}/component_catalog/templates/
 
+%check
+# don't run tests on rhel
+%if 0%{?rhel} == 0
+# until django-1.6 support for tests is enabled, disable tests
+export PYTHONPATH=$PYTHONPATH:%{_datadir}/openstack-dashboard
+# TODO : reenable, We don't have selenium
+#./run_tests.sh -N -P
+%endif
+
 %files
 %doc README.rst
 %dir %{python2_sitelib}/app_catalog
@@ -119,15 +128,6 @@ ln -s %{_sysconfdir}/openstack-dashboard/enabled/_91_project_component_catalog_p
 %{_sysconfdir}/openstack-dashboard/enabled/_80_project_catalog_panel_group.py*
 %{_sysconfdir}/openstack-dashboard/enabled/_90_project_app_catalog_panel.py*
 %{_sysconfdir}/openstack-dashboard/enabled/_91_project_component_catalog_panel.py*
-
-%check
-# don't run tests on rhel
-%if 0%{?rhel} == 0
-# until django-1.6 support for tests is enabled, disable tests
-export PYTHONPATH=$PYTHONPATH:%{_datadir}/openstack-dashboard
-# TODO : reenable, We don't have selenium
-#./run_tests.sh -N -P
-%endif
 
 %changelog
 * Sun Aug 23 2015 Kevin Fox <kevin@efox.cc> - 0.0.1-1
