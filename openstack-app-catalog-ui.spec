@@ -96,12 +96,12 @@ ln -s %{_sysconfdir}/openstack-dashboard/enabled/_91_project_component_catalog_p
 
 # Move static files to horizon. These require that you compile them again
 # post install { python manage.py compress }
-#mkdir -p  %{buildroot}%{python2_sitelib}/app_catalog/static
-#mkdir -p  %{buildroot}%{python2_sitelib}/app_catalog/templates
-#mkdir -p  %{buildroot}%{python2_sitelib}/component_catalog/templates
-#cp -r app_catalog/static/* %{buildroot}%{python2_sitelib}/app_catalog/static/
-#cp -r app_catalog/templates/* %{buildroot}%{python2_sitelib}/app_catalog/templates/
-#cp -r component_catalog/templates/* %{buildroot}%{python2_sitelib}/component_catalog/templates/
+mkdir -p  %{buildroot}%{python2_sitelib}/app_catalog/static
+mkdir -p  %{buildroot}%{python2_sitelib}/app_catalog/templates
+mkdir -p  %{buildroot}%{python2_sitelib}/component_catalog/templates
+cp -r app_catalog/static/* %{buildroot}%{python2_sitelib}/app_catalog/static/
+cp -r app_catalog/templates/* %{buildroot}%{python2_sitelib}/app_catalog/templates/
+cp -r component_catalog/templates/* %{buildroot}%{python2_sitelib}/component_catalog/templates/
 
 %check
 # don't run tests on rhel
