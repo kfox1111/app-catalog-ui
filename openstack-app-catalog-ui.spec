@@ -1,5 +1,3 @@
-%global homedir %{_datadir}/app-catalog
-
 Name:         openstack-app-catalog-ui
 Version:      XXX
 Release:      XXX
@@ -17,16 +15,7 @@ BuildRequires: python-lockfile
 BuildRequires: python-pbr
 BuildRequires: python-sphinx >= 1.1.3
 BuildRequires: python-flake8
-BuildRequires: Django
-BuildRequires: python-django
-BuildRequires: python-django-horizon
 BuildRequires: openstack-dashboard
-BuildRequires: python-cinderclient
-BuildRequires: python-novaclient
-BuildRequires: python-keystoneclient
-BuildRequires: python-heatclient
-BuildRequires: python-glanceclient
-BuildRequires: python-neutronclient
 BuildRequires: tree
 
 # testing deps, not on RHEl
@@ -42,11 +31,6 @@ BuildRequires: python-openstack-nose-plugin
 BuildRequires: python-selenium
 %endif
 
-Requires: Django
-Requires: python-django
-Requires: python-django-compressor
-Requires: python-django-pyscss
-Requires: python-django-openstack-auth
 Requires: pytz
 Requires: openstack-dashboard
 Requires: python-lockfile
@@ -57,12 +41,6 @@ Requires: python-eventlet
 Requires: python-iso8601
 Requires: python-oslo-config
 Requires: python-lockfile
-Requires: python-cinderclient
-Requires: python-novaclient
-Requires: python-keystoneclient
-Requires: python-heatclient
-Requires: python-glanceclient
-Requires: python-neutronclient
 
 
 %description
