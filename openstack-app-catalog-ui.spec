@@ -1,4 +1,4 @@
-%global homedir %{_datadir}/app-catalogG
+%global homedir %{_datadir}/app-catalog
 
 Name:         openstack-app-catalog-ui
 Version:      XXX
@@ -127,7 +127,3 @@ export PYTHONPATH=$PYTHONPATH:%{_datadir}/openstack-dashboard
 %{_sysconfdir}/openstack-dashboard/enabled/_80_project_catalog_panel_group.py*
 %{_sysconfdir}/openstack-dashboard/enabled/_90_project_app_catalog_panel.py*
 %{_sysconfdir}/openstack-dashboard/enabled/_91_project_component_catalog_panel.py*
-
-%changelog
-* Sun Aug 23 2015 Kevin Fox <kevin@efox.cc> - 0.0.1-1
-- initial package
