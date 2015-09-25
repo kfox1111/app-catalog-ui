@@ -70,7 +70,6 @@ app-catalog-ui is an OpenStack Horizon user interface plugin to provide easy acc
 
 %prep
 %setup -q -n app-catalog-ui-%{upstream_version}
-rm -rf app_catalog_ui.egg-info/
 
 # Remove the requirements file so that pbr hooks don't add it
 # to distutils requires_dist config
