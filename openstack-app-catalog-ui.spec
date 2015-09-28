@@ -11,7 +11,6 @@ BuildArch:     noarch
 
 BuildRequires: python2-devel
 BuildRequires: python-setuptools
-BuildRequires: python-lockfile
 BuildRequires: python-pbr
 BuildRequires: python-sphinx >= 1.1.3
 BuildRequires: python-flake8
@@ -23,24 +22,21 @@ BuildRequires: tree
 BuildRequires: python-coverage
 BuildRequires: python-django-nose
 BuildRequires: python-mock
-BuildRequires: python-mox
+BuildRequires: python-mox3
 BuildRequires: python-nose
 BuildRequires: python-nose-exclude
 BuildRequires: python-nose-xcover
 BuildRequires: python-openstack-nose-plugin
-BuildRequires: python-selenium
 %endif
 
 Requires: pytz
 Requires: openstack-dashboard
-Requires: python-lockfile
 Requires: python-scss
 Requires: python-netaddr
 Requires: python-pbr
 Requires: python-eventlet
 Requires: python-iso8601
 Requires: python-oslo-config
-Requires: python-lockfile
 
 
 %description
@@ -81,12 +77,8 @@ cp -r app_catalog/templates/* %{buildroot}%{python2_sitelib}/app_catalog/templat
 cp -r component_catalog/templates/* %{buildroot}%{python2_sitelib}/component_catalog/templates/
 
 %check
-# don't run tests on rhel
 %if 0%{?rhel} == 0
-# until django-1.6 support for tests is enabled, disable tests
 export PYTHONPATH=$PYTHONPATH:%{_datadir}/openstack-dashboard
-# TODO : reenable, We don't have selenium
-#./run_tests.sh -N -P
 %endif
 
 %files
