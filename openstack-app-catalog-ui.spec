@@ -42,9 +42,9 @@ export OSLO_PACKAGE_VERSION=%{version}
 # Move config to horizon
 mkdir -p  %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled
 mkdir -p  %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled
-mv enabled/_80_project_catalog_panel_group.py %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/_80_project_catalog_panel_group.py
-mv enabled/_90_project_app_catalog_panel.py %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/_90_project_app_catalog_panel.py
-mv enabled/_91_project_component_catalog_panel.py %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/_91_project_component_catalog_panel.py
+mv app_catalog/enabled/_80_project_catalog_panel_group.py %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/_80_project_catalog_panel_group.py
+mv app_catalog/enabled/_90_project_app_catalog_panel.py %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/_90_project_app_catalog_panel.py
+mv app_catalog/enabled/_91_project_component_catalog_panel.py %{buildroot}%{_sysconfdir}/openstack-dashboard/enabled/_91_project_component_catalog_panel.py
 ln -s %{_sysconfdir}/openstack-dashboard/enabled/_80_project_catalog_panel_group.py %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/_80_project_catalog_panel_group.py
 ln -s %{_sysconfdir}/openstack-dashboard/enabled/_90_project_app_catalog_panel.py %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/_90_project_app_catalog_panel.py
 ln -s %{_sysconfdir}/openstack-dashboard/enabled/_91_project_component_catalog_panel.py %{buildroot}%{_datadir}/openstack-dashboard/openstack_dashboard/local/enabled/_91_project_component_catalog_panel.py
@@ -57,6 +57,7 @@ mkdir -p  %{buildroot}%{python2_sitelib}/component_catalog/templates
 cp -r app_catalog/static/* %{buildroot}%{python2_sitelib}/app_catalog/static/
 cp -r app_catalog/templates/* %{buildroot}%{python2_sitelib}/app_catalog/templates/
 cp -r component_catalog/templates/* %{buildroot}%{python2_sitelib}/component_catalog/templates/
+rm -rf %{buildroot}%{python2_sitelib}/app_catalog/enabled
 
 %check
 # no upstream tests
