@@ -12,30 +12,12 @@ BuildArch:     noarch
 BuildRequires: python2-devel
 BuildRequires: python-setuptools
 BuildRequires: python-pbr
-BuildRequires: python-sphinx >= 1.1.3
 BuildRequires: python-flake8
 BuildRequires: openstack-dashboard
-BuildRequires: tree
-
-# testing deps, not on RHEl
-%if 0%{?rhel} == 0
-BuildRequires: python-coverage
-BuildRequires: python-django-nose
-BuildRequires: python-mock
-BuildRequires: python-mox3
-BuildRequires: python-nose
-BuildRequires: python-nose-exclude
-BuildRequires: python-nose-xcover
-BuildRequires: python-openstack-nose-plugin
-%endif
 
 Requires: pytz
 Requires: openstack-dashboard
-Requires: python-scss
-Requires: python-netaddr
 Requires: python-pbr
-Requires: python-eventlet
-Requires: python-iso8601
 Requires: python-oslo-config
 
 
@@ -77,12 +59,11 @@ cp -r app_catalog/templates/* %{buildroot}%{python2_sitelib}/app_catalog/templat
 cp -r component_catalog/templates/* %{buildroot}%{python2_sitelib}/component_catalog/templates/
 
 %check
-%if 0%{?rhel} == 0
-export PYTHONPATH=$PYTHONPATH:%{_datadir}/openstack-dashboard
-%endif
+# no upstream tests
 
 %files
 %doc README.rst
+%license LICENSE
 %dir %{python2_sitelib}/app_catalog
 %dir %{python2_sitelib}/component_catalog
 %{python2_sitelib}/*.egg-info
