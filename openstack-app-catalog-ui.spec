@@ -12,7 +12,6 @@ BuildArch:     noarch
 BuildRequires: python2-devel
 BuildRequires: python-setuptools
 BuildRequires: python-pbr
-BuildRequires: python-flake8
 BuildRequires: openstack-dashboard
 
 Requires: pytz
@@ -29,7 +28,8 @@ app-catalog-ui is an OpenStack Horizon user interface plugin to provide easy acc
 
 # Remove the requirements file so that pbr hooks don't add it
 # to distutils requires_dist config
-rm -rf {test-,}requirements.txt tools/{pip,test}-requires
+rm -rf tools/{pip,test}-requires
+truncate -s 0 {test-,}requirements.txt 
 
 %build
 export OSLO_PACKAGE_VERSION=%{version}
